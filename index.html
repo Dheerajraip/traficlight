@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trafic light simulator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+            margin: 0;
+        }
+         
+        .traffic-light {
+            width: 100px;
+            height: 300px;
+            background: #222;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 0 10px
+        }
+        .light {
+            width: 80px;
+            height: 80px;
+            background: #444;
+            margin: 10px auto;
+            border-radius:50px;
+        }
+        
+        .red {
+            background: #e90505;
+        }
+        
+        .yellow {
+            background: #f5be0a;
+        }
+        
+        .green {
+            background: #04f03f;
+        }
+        .active{
+            opacity:1;
+        }
+        .inactive {
+            opacity:0.3;
+        }
+        
+    
+    </style>
+</head>
+<body>
+    <div class="traffic-light">
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light green"></div>
+    </div> 
+<script>
+    const lights = document.querySelectorAll('.light');
+let currentLight = 0;
+
+function changeLight() {
+    lights.forEach((light,index) => {
+        if(index == currentLight) {
+            light.classList.add('active');
+            light.classList.remove('inactive');
+        }
+        else{
+            light.classList.add('inactive');
+            light.classList.remove('active');
+            
+        }
+
+    });
+    currentLight = (currentLight + 1) % lights.length;
+}
+
+setInterval(changeLight, 3000);
+
+</script>
+    
+</body>
+</html>
